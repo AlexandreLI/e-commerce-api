@@ -1,0 +1,40 @@
+[
+    {
+        "model": "customer.customer",
+        "pk": "8df5a764-8cc3-4f93-9470-f3f6734b2a7d",
+        "fields": {
+            "name": "John Doe"
+        }
+    },
+    {
+        "model": "customer.customer",
+        "pk": "f6b0ed7a-d8ee-4fd2-b77f-b4c9ebd653a4",
+        "fields": {
+            "name": "Jane Smith"
+        }
+    },
+    {
+        "model": "product.product",
+        "pk": "a7a4d5fa-3d6f-4a56-97eb-74ebf7c3f93c",
+        "fields": {
+            "name": "Laptop",
+            "status": "available"
+        }
+    },
+    {
+        "model": "product.product",
+        "pk": "b9e2c35d-8b34-42d5-94b5-9a6c17a6a1f7",
+        "fields": {
+            "name": "Smartphone",
+            "status": "reserved"
+        }
+    },
+    {
+        "model": "product.product",
+        "pk": "a357394b-be74-47b1-920b-84569b125b28",
+        "fields": {
+            "name": "Smartphone",
+            "status": "reserved"
+        }
+    }
+]
