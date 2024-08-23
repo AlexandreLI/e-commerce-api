@@ -15,6 +15,7 @@ class ListProductUseCase:
 
     def execute(self) -> list[ProductOutput]:
         products = self.product_repo.get_all()
+
         reservations = self.reservation_repo.find_all_by_products(
             [product.id for product in products]
         )
@@ -27,7 +28,8 @@ class ListProductUseCase:
 
         if products_to_update:
             products = self.product_repo.get_all()
+
         return [
-            ProductOutput(name=product.name, status=product.status, id=product.id)
+            ProductOutput(name=product.name, status=product.status.value, id=product.id)
             for product in products
         ]

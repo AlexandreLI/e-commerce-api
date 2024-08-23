@@ -10,39 +10,11 @@ from django_project.reservation.models import Reservation as ReservationModel
 class DjangoReservationRepository(ReservationRepositoryInterface):
     def find_all_by_customer(self, customer_id: UUID) -> list[Reservation]:
         result = ReservationModel.objects.filter(customer_id=customer_id)
-        return [
-            Reservation(
-                product=Product(
-                    id=reservation.product.id,
-                    name=reservation.product.name,
-                    status=StatusEnum[reservation.product.status.upper()],
-                ),
-                customer=Customer(
-                    id=reservation.customer.id, name=reservation.customer.name
-                ),
-                reserved_at=reservation.reservation_date,
-                id=reservation.id,
-            )
-            for reservation in result
-        ]
+        return [self._mapping(reservation) for reservation in result]
 
     def find_all_by_products(self, products: list[UUID]) -> list[Reservation]:
         result = ReservationModel.objects.filter(product_id__in=products)
-        return [
-            Reservation(
-                product=Product(
-                    id=reservation.product.id,
-                    name=reservation.product.name,
-                    status=StatusEnum(reservation.product.status),
-                ),
-                customer=Customer(
-                    id=reservation.customer.id, name=reservation.customer.name
-                ),
-                reserved_at=reservation.reservation_date,
-                id=reservation.id,
-            )
-            for reservation in result
-        ]
+        return [self._mapping(reservation) for reservation in result]
 
     def create(self, entity: Reservation) -> Reservation:
 
@@ -53,15 +25,20 @@ class DjangoReservationRepository(ReservationRepositoryInterface):
             id=entity.id,
         )
         reservation_model.save()
+        return self._mapping(reservation_model)
+
+    def delete(self, entity: Reservation) -> None:
+        ReservationModel.objects.filter(id=entity.id).delete()
+
+    def _mapping(self, reservation_model: ReservationModel) -> Reservation:
         return Reservation(
             product=Product(
                 id=reservation_model.product.id,
                 name=reservation_model.product.name,
-                status=StatusEnum(reservation_model.product.status),
+                status=StatusEnum[reservation_model.product.status.upper()],
             ),
             customer=Customer(
-                id=reservation_model.customer.id,
-                name=reservation_model.customer.name,
+                id=reservation_model.customer.id, name=reservation_model.customer.name
             ),
             reserved_at=reservation_model.reservation_date,
             id=reservation_model.id,

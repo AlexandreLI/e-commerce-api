@@ -27,7 +27,8 @@ def reservations() -> list[Reservation]:
     reservation_2 = Reservation(
         customer=customers[1],
         product=products[1],
-        reserved_at=datetime.datetime.now() - datetime.timedelta(days=4),
+        reserved_at=datetime.datetime.now(datetime.timezone.utc)
+        - datetime.timedelta(days=4),
     )
     return [reservation_1, reservation_2]
 
@@ -46,22 +47,22 @@ def test_list_products_use_case(reservations):
         ProductOutput(
             id=products[0].id,
             name="Product 1",
-            status=StatusEnum.AVAILABLE,
+            status=StatusEnum.AVAILABLE.value,
         ),
         ProductOutput(
             id=products[1].id,
             name="Product 2",
-            status=StatusEnum.AVAILABLE,
+            status=StatusEnum.AVAILABLE.value,
         ),
         ProductOutput(
             id=products[2].id,
             name="Product 3",
-            status=StatusEnum.RESERVED,
+            status=StatusEnum.RESERVED.value,
         ),
         ProductOutput(
             id=products[3].id,
             name="Product 4",
-            status=StatusEnum.UNAVAILABLE,
+            status=StatusEnum.UNAVAILABLE.value,
         ),
     ]
     result = use_case.execute()

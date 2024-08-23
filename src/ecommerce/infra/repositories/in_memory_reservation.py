@@ -35,3 +35,6 @@ class InMemoryReservationRepository(Interface):
     def create(self, entity: Reservation) -> Reservation:
         self.reservations.append(entity)
         return entity
+
+    def delete(self, entity: Reservation) -> None:
+        self.reservations.remove(entity)

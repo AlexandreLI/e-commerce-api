@@ -51,3 +51,14 @@ class TestDjangoReservationRepository:
 
         result = repository.create(reservation)
         assert result == reservation
+
+    def test_delete(self, customer_entity, product_entity, customer_model, product_model):
+        reservation = Reservation(
+            product=product_entity,
+            customer=customer_entity,
+        )
+        repository = DjangoReservationRepository()
+        repository.create(reservation)
+        repository.delete(reservation)
+        result = repository.find_all_by_customer(reservation.customer.id)
+        assert result == []

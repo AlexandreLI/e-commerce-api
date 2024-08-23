@@ -6,3 +6,9 @@ test:
 
 fixtures:
 	python manage.py loaddata src/django_project/fixtures/initial_data.json
+
+migrate:
+	python manage.py migrate
+
+run:
+	python manage.py runserver

@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "5ecf1288-6f9d-4cbe-88a4-cd334b52eda6",
+		"name": "Ecommerce APi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29349018"
+	},
+	"item": [
+		{
+			"name": "Reserve Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customer_id\": \"19c3dd05-3049-4fe0-9321-4ef80c24eae0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/products/88e44e2a-2a84-4b68-b361-339f79bd179f/reserve",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"products",
+						"88e44e2a-2a84-4b68-b361-339f79bd179f",
+						"reserve"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Product",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Customer Reservation List",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

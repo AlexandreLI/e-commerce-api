@@ -25,27 +25,29 @@ def test_reservation_can_be_created(customer: Customer):
 
 def test_reservation_product_is_not_available(customer: Customer):
     with pytest.raises(ValueError, match="Product unavailable or already reserved"):
-        Reservation(
+        reservation = Reservation(
             customer=customer,
             product=Product(name="Product 2", status=StatusEnum.UNAVAILABLE),
-            reserved_at=datetime.datetime.now(),
+            reserved_at=datetime.datetime.now(datetime.timezone.utc),
         )
+        reservation.validate_product_availability()
 
 
 def test_reservation_product_is_reserved(customer: Customer):
     with pytest.raises(ValueError, match="Product unavailable or already reserved"):
-        Reservation(
+        reservation = Reservation(
             customer=customer,
             product=Product(name="Product 3", status=StatusEnum.RESERVED),
-            reserved_at=datetime.datetime.now(),
+            reserved_at=datetime.datetime.now(datetime.timezone.utc),
         )
+        reservation.validate_product_availability()
 
 
 def test_reservation_is_expired_true(customer: Customer):
     reservation = Reservation(
         customer=customer,
         product=Product(name="Product 4", status=StatusEnum.AVAILABLE),
-        reserved_at=datetime.datetime.now() - datetime.timedelta(days=4),
+        reserved_at=datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=4),
     )
     result = reservation.is_expired()
 
@@ -56,7 +58,7 @@ def test_reservation_is_expired_false(customer: Customer):
     reservation = Reservation(
         customer=customer,
         product=Product(name="Product 4", status=StatusEnum.AVAILABLE),
-        reserved_at=datetime.datetime.now() - datetime.timedelta(days=3),
+        reserved_at=datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=3),
     )
     result = reservation.is_expired()
 

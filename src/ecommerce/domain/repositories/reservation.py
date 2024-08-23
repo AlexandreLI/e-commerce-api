@@ -19,3 +19,7 @@ class ReservationRepositoryInterface(ABC):
     @abstractmethod
     def create(self, entity: Reservation) -> Reservation:
         pass
+
+    @abstractmethod
+    def delete(self, entity: Reservation) -> None:
+        pass

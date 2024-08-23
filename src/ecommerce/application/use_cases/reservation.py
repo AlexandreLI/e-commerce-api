@@ -35,6 +35,7 @@ class CreateReservationUseCase:
 
         try:
             reservation_entity = Reservation(customer=customer, product=product)
+            reservation_entity.validate_product_availability()
         except (ValueError, KeyError) as error:
             raise InvalidReservationException(error) from error
 
