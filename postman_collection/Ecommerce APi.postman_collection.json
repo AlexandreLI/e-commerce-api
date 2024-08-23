@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5ecf1288-6f9d-4cbe-88a4-cd334b52eda6",
+		"_postman_id": "ea40519a-98fd-4646-8074-21a84a353270",
 		"name": "Ecommerce APi",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "29349018"
@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"customer_id\": \"19c3dd05-3049-4fe0-9321-4ef80c24eae0\"\r\n}",
+					"raw": "{\r\n    \"customer_id\": \"8df5a764-8cc3-4f93-9470-f3f6734b2a7d\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -21,7 +21,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8000/products/88e44e2a-2a84-4b68-b361-339f79bd179f/reserve",
+					"raw": "http://localhost:8000/products/a7a4d5fa-3d6f-4a56-97eb-74ebf7c3f93c/reserve",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -29,7 +29,7 @@
 					"port": "8000",
 					"path": [
 						"products",
-						"88e44e2a-2a84-4b68-b361-339f79bd179f",
+						"a7a4d5fa-3d6f-4a56-97eb-74ebf7c3f93c",
 						"reserve"
 					]
 				}
@@ -40,7 +40,18 @@
 			"name": "List Product",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"products"
+					]
+				}
 			},
 			"response": []
 		},
@@ -48,7 +59,20 @@
 			"name": "Customer Reservation List",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/customer/8df5a764-8cc3-4f93-9470-f3f6734b2a7d/reservations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"customer",
+						"8df5a764-8cc3-4f93-9470-f3f6734b2a7d",
+						"reservations"
+					]
+				}
 			},
 			"response": []
 		}
