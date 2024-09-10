@@ -1,12 +1,25 @@
 # e-commerce-api
-Backend Api do E-Commerce
+Backend Api do E-Commerce - Desafio
+
+### Descrição do desafio
+[Arquivo com a descrição](desafio_python.pdf)
+
 
 # Dependências
 Python 3.12.3 ou superior\
 Poetry 1.8.2\
 Make (Opcional)
+# Instalação docker compose
 
-# Instalação
+1 - na raiz do projeto digite o seguinte comando:
+```
+docker compose up -d
+```
+2 - importe para o seu Postman a collection que está na pasta postman_collection
+
+3 - Teste a aplicação na porta 8000
+
+# Instalação local
 
 1 - Na raiz do projeto, instale as dependecias do python com o seguinte comando:
 
